@@ -6,7 +6,6 @@ using namespace std;
 int a[20];
 int n;
 
-
 //fungsi untuk menginputkan ukuran array
 void read() {
 	while (true) {
@@ -23,7 +22,8 @@ void read() {
 	cout << "......................" << endl;
 
 	//user inputs for the array
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++)
+	{
 		cout << "<" << (i + 1) << ">";
 		cin >> a[i];
 	}
