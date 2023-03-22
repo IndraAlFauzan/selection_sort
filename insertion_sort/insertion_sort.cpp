@@ -1,8 +1,7 @@
 #include <iostream>
-
 using namespace std;
 
-//definidikan array dengan ukuran maksimum 20
+//mendifinisikan array dengan ukuran maksimum 20
 int a[20];
 int n;
 
@@ -29,6 +28,18 @@ void read() {
 	}
 }
 
+void InsertionShortArry() {
+	for (int i = 1; i < n; i++) {
+		int temp = a[i];
+		int j = i - 1;
+		while ((j >= 0) && (a[j] > temp)) {
+			a[j + 1] = a[j];
+			j = j - 1;
+		}
+		a[j + 1] = temp;
+	}
+}
+
 void display() {
 	//display the shorted array
 	cout << "total number of data movements : " << (n - 1) << endl;
@@ -41,21 +52,9 @@ void display() {
 	}
 }
 
-void InsertionShortArry() {
-	for (int i = 1; i < n; i++) {
-		int temp = a[i];
-		int j = i - 1;
-		while ((j >= 0) && (a[j] > temp)) {
-			a[j + 1] = a[j];
-			j--;
-		}
-		a[j + 1] = temp;
-	}
-}
 
 
 int main() {
-
 	read();
 	InsertionShortArry();
 	display();
