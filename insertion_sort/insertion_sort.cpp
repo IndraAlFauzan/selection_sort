@@ -1,63 +1,78 @@
 #include <iostream>
 using namespace std;
 
-//mendifinisikan array dengan ukuran maksimum 20
-int a[20];
-int n;
+int arr[20];										// Membuat Array dengan panjang data 20
+int n;												// Membuat Variable inputan n
 
-//fungsi untuk menginputkan ukuran array
-void read() {
-	while (true) {
-		cout << "Masukkan jumlah Element/Data array :";
-		cin >> n;
-		if (n <= 20)
-			break;
-		else
-			cout << "\nArray maksimum 20 element/data.\n" << endl;
-	}
-	cout << endl;
-	cout << "......................" << endl;
-	cout << "Masukkan element Array" << endl;
-	cout << "......................" << endl;
-
-	//user inputs for the array
-	for (int i = 0; i < n; i++)
+void input() {					// Procedure Input
+	while (true)
 	{
-		cout << "<" << (i + 1) << ">";
-		cin >> a[i];
+		cout << "Masukkan Jumlah Data pada Array : "; // Membuat Inputan jumlahh element Array
+		cin >> n;									 // memanggil variable inputan n
+
+		if (n <= 20) {								// Membuat Kondisi n tidak lebih dari 20
+			break;
+		}
+		else
+		{
+			cout << "\nArray yang anda masukkan maksimal 20 Elemen.\n"; // Menampilkan Pesan jika data lebih dari 20
+		}
+	}
+	cout << endl;									// Membuat jarak per baris program
+	cout << "======================" << endl;		// Membuat tampilan susunan data element array
+	cout << "Masukkan Element Array" << endl;
+	cout << "======================" << endl;
+
+	for (int i = 0; i < n; i++)						// Menggunakan perulangan for untuk menyimpan data pada array
+	{
+		cout << "Data ke-" << (i + 1) << ": ";		// Memasukkan atau menginputkan nilai data n  
+		cin >> arr[i];								// Menyimpan nilai data n kedalam array arr
 	}
 }
 
-void InsertionShortArry() {
-	for (int i = 1; i < n; i++) {
-		int temp = a[i];
-		int j = i - 1;
-		while ((j >= 0) && (a[j] > temp)) {
-			a[j + 1] = a[j];
-			j = j - 1;
+void insertionsort() {			// Procedure Insertionsort
+
+	int temp;					// Membuat variable data temporer atau penyimpanan sementara				
+	int j, i;						// Membuat varible j sebagai penanda
+
+	for (i = 1; i <= n - 1; i++) {	// Step 1 
+
+		temp = arr[i];				// Step 2
+
+		j = i - 1;					// Step 3
+
+		while (j >= 0 && arr[j] > temp) // Step 4
+		{
+			arr[j + 1] = arr[j];		// Step 4a
+			j--;						// Step 4b
 		}
-		a[j + 1] = temp;
+
+		arr[j + 1] = temp;			// Step 5
+
+
+
 	}
 }
 
 void display() {
-	//display the shorted array
-	cout << "total number of data movements : " << (n - 1) << endl;
-	cout << "......................" << endl;
-	cout << "Insertion Shorted array elements" << endl;
-	cout << "......................" << endl;
+	cout << endl;											// Output baris Kosong
+	cout << "==================================" << endl;
+	cout << "Total Passs = " << n - 1 << endl; // count element movement
+	cout << "==================================" << endl;   // Output ke layar
+	cout << "Element Array yang telah tersusun" << endl;    // Output ke layar  
+	cout << "==================================" << endl;   // Output ke layar
 
-	for (int j = 0; j < n; j++) {
-		cout << a[j] << endl;
+	for (int j = 0; j < n; j++) {					// Looping dengan j dimulai dari 0  hingga n-1
+		cout << arr[j] << endl;						// Output ke layar
 	}
+	cout << endl;									// Output baris kosong
 }
 
-
-
-int main() {
-	read();
-	InsertionShortArry();
+int main()
+{
+	input();
+	insertionsort();
 	display();
-	system("pause");
+	system("Pause");
 	return 0;
 }
